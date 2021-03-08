@@ -1,5 +1,5 @@
 <template>
-    <form class="mt-6" action="#" method="POST">
+    <form class="mt-6" @submit.prevent="emitSubmit">
         <div>
             <label class="block text-base font-medium leading-relaxed text-gray-700">Kundennummer</label>
             <input
@@ -11,6 +11,7 @@
                 autofocus
                 autocomplete
                 required
+                v-model="user.debitorId"
             />
         </div>
         <div class="mt-4">
@@ -24,6 +25,7 @@
                 autofocus
                 autocomplete
                 required
+                v-model="user.email"
             />
         </div>
         <div class="flex flex-wrap mt-4 mb-6 -mx-3">
@@ -36,6 +38,7 @@
                     id="password"
                     type="text"
                     placeholder="Ihr Passwort"
+                    v-model="user.password"
                 />
             </div>
             <div class="w-full px-3 md:w-1/2">
@@ -45,12 +48,11 @@
                     id="confirm"
                     type="text"
                     placeholder="Wiederholen"
+                    v-model="user.passwordConfirm"
                 />
             </div>
         </div>
         <button
-            @click="test"
-            @submit.prevent="emitSubmit"
             type="submit"
             class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
         >
@@ -65,19 +67,23 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import { UserRegistrationModel } from "./UserRegistrationModel"
 
 export default defineComponent({
     emits: ["form-submit"],
     setup(props, ctx) {
-        const test = () => {
-            console.log("das ist eine test")
+        const user: UserRegistrationModel = {
+            debitorId: "",
+            email: "",
+            password: "",
+            passwordConfirm: "",
         }
         const emitSubmit = () => {
             console.log("submitting the form")
-            ctx.emit("form-submit")
+            ctx.emit("form-submit", user)
         }
         return {
-            test,
+            user,
             emitSubmit,
         }
     },

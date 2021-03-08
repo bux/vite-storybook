@@ -60,7 +60,7 @@
                                     </div>
                                 </button>
                             </div>
-                            <RegistrationForm />
+                            <RegistrationForm @form-submit="registerUser" />
                         </div>
                     </div>
                 </div>
@@ -72,16 +72,19 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import RegistrationForm from "./RegistrationForm.vue"
+import { UserRegistrationModel } from "./UserRegistrationModel"
 
 export default defineComponent({
     components: {
         RegistrationForm,
     },
     setup() {
-        const registerUser = () => {
-            console.log("Register User")
+        const registerUser = (user: UserRegistrationModel) => {
+            console.log("Register User", user.debitorId, user.email)
         }
-        return registerUser
+        return {
+            registerUser,
+        }
     },
 })
 </script>
