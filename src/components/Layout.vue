@@ -3,7 +3,7 @@
         <div
             class="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left"
         >
-            <div class="">
+            <div class="mb-8">
                 <slot name="actions" />
             </div>
             <div class="results">
