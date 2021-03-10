@@ -4,20 +4,13 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "serve": "vite preview",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "serve": "vite preview"
     },
     "dependencies": {
         "vue": "^3.0.5"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
-        "@storybook/addon-actions": "^6.2.0-beta.9",
-        "@storybook/addon-essentials": "^6.2.0-beta.9",
-        "@storybook/addon-links": "^6.2.0-beta.9",
-        "@storybook/addon-postcss": "^2.0.0",
-        "@storybook/vue3": "^6.2.0-beta.9",
         "@typescript-eslint/eslint-plugin": "^4.16.1",
         "@typescript-eslint/parser": "^4.16.1",
         "@vitejs/plugin-vue": "^1.1.5",

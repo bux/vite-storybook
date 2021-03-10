@@ -1,15 +1,15 @@
 <template>
-    <Registration />
+    <Card />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import Registration from "./components/Registration/Registration.vue"
+import Card from "./components/sample/Card.vue"
 
 export default defineComponent({
     name: "App",
     components: {
-        Registration,
+        Card,
     },
 })
 </script>
