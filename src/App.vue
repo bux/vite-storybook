@@ -1,13 +1,10 @@
 <template>
     <Layout>
+        <template #title>
+            <h1 class="text-8xl font-bold leading-none" style="font-family: 'Brush Script MT'">Breweries</h1>
+        </template>
         <template #actions>
-            <button
-                type="button"
-                class="border border-gray-700 text-gray-700 rounded-md px-4 py-2 transition duration-500 ease select-none hover:text-white hover:bg-gray-800 focus:outline-none focus:shadow-outline"
-                @click.prevent="getBreweries"
-            >
-                Get me some breweries
-            </button>
+            <Button @click="getBreweries" :disabled="hasFetchedData">Get me some breweries</Button>
         </template>
         <template #results>
             <CardList :data="breweries" />
@@ -16,9 +13,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive } from "vue"
+import { computed, defineComponent, reactive, ref } from "vue"
 import Layout from "./components/Layout.vue"
 import CardList from "./components/CardList.vue"
+import Button from "./components/Button.vue"
+
 import Brewery from "./interfaces/Brewery"
 import CardData from "./interfaces/CardData"
 
@@ -30,9 +29,11 @@ export default defineComponent({
     name: "App",
     components: {
         Layout,
+        Button,
         CardList,
     },
     setup() {
+        const hasFetchedData = ref(false)
         const state: State = reactive({
             breweries: [],
         })
@@ -40,6 +41,7 @@ export default defineComponent({
             const response = await fetch("https://jo-demo-api.netlify.app/.netlify/functions/breweries")
             const data: Brewery[] = await response.json()
             state.breweries = data
+            hasFetchedData.value = true
         }
 
         const adaptBreweriesToCardData = (breweries: Brewery[]): CardData[] => {
@@ -57,6 +59,7 @@ export default defineComponent({
         const breweries = computed(() => adaptBreweriesToCardData(state.breweries))
 
         return {
+            hasFetchedData,
             breweries,
             getBreweries,
         }
