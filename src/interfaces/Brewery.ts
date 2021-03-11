@@ -16,4 +16,6 @@ export default interface Brewery {
     street: string
     updated_at: string
     website_url: string
+    image_url: string
+    rating: number
 }

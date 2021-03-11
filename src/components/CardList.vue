@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <div v-if="data.length > 0" class="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
         <Card v-for="cardData in data" :key="cardData.id" :data="cardData" />
     </div>
 </template>
@@ -20,12 +20,6 @@ export default defineComponent({
                 return []
             },
         },
-    },
-    setup() {
-        const test = ""
-        return {
-            test,
-        }
     },
 })
 </script>

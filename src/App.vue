@@ -49,9 +49,11 @@ export default defineComponent({
                 return {
                     id: item.id,
                     title: item.name,
+                    image: item.image_url,
                     location: `${item.city}, ${item.state}`,
                     date: new Date(item.created_at),
                     url: item.website_url,
+                    rating: item.rating,
                 }
             })
         }

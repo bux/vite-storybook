@@ -1,26 +1,19 @@
 <template>
     <div class="w-full max-w-sm overflow-hidden rounded border bg-white shadow">
-        <div class="relative">
-            <div class="h-48 w-full">
-                <a class="block transition-opacity hover:opacity-90" :href="data.url">
-                    <img
-                        class="object-cover h-48 w-full"
-                        :src="`https://picsum.photos/245/245?v=${data.id}`"
-                        :alt="data.title"
-                    />
-                </a>
-            </div>
-        </div>
+        <a class="block transition-opacity hover:opacity-90" :href="data.url">
+            <img class="object-cover h-48 w-full" :src="data.image" :alt="data.title" loading="lazy" />
+        </a>
         <div class="p-3">
-            <h3 class="mr-10 text-sm truncate-2nd">
-                <a class="hover:text-blue-500" :href="data.url">{{ data.title }}</a>
+            <h3>
+                <a class="hover:text-yellow-700" :href="data.url">{{ data.title }}</a>
             </h3>
-            <div class="flex items-start justify-between">
-                <p class="text-xs text-gray-500">{{ data.location }}</p>
+            <div class="text-xs text-gray-500">
+                <p>{{ data.location }}</p>
+                <p>{{ date }}</p>
+                <p v-if="data.rating">
+                    <span v-for="i in data.rating" :key="i">⭐</span>
+                </p>
             </div>
-            <p class="text-xs text-gray-500">
-                {{ date }}
-            </p>
         </div>
     </div>
 </template>
