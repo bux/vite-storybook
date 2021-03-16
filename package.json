@@ -2,7 +2,7 @@
     "name": "vite-apetito",
     "version": "0.0.0",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --open",
         "build": "vite build",
         "serve": "vite preview"
     },
